@@ -1,11 +1,12 @@
 # mock-detector
 
-function to detect isMock()/isFromMockProvider(). Returning boolean value.
+Detect mock provider location using android's native `isMock()` method.
+Returns state wether device is using mock location and current location.
 
 ## Install
 
 ```bash
-npm install mock-detector
+npm install @periksa/cap-mock-detector
 npx cap sync
 ```
 
@@ -13,7 +14,7 @@ npx cap sync
 
 <docgen-index>
 
-* [`detectMock()`](#detectmock)
+- [`detectMock()`](#detectmock)
 
 </docgen-index>
 
@@ -28,6 +29,6 @@ detectMock() => Promise<any>
 
 **Returns:** <code>Promise&lt;any&gt;</code>
 
---------------------
+---
 
 </docgen-api>
