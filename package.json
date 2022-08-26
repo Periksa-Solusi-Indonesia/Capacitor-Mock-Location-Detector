@@ -1,7 +1,7 @@
 {
-  "name": "mock-detector",
-  "version": "0.0.1",
-  "description": "function to detect isMock()/isFromMockProvider(). Returning boolean value.",
+  "name": "@periksa/cap-mock-detector",
+  "version": "0.1.0",
+  "description": "Detecting mock provider when fetching location (for Android).",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
@@ -9,18 +9,16 @@
   "files": [
     "android/src/main/",
     "android/build.gradle",
-    "dist/",
-    "ios/Plugin/",
-    "MockDetector.podspec"
+    "dist/"
   ],
   "author": "Andriatama Bagaskara",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ArthourNychta/mock-permission-detector.git.git"
+    "url": "git+https://github.com/Periksa-Solusi-Indonesia/Capacitor-Mock-Location-Detector.git"
   },
   "bugs": {
-    "url": "https://github.com/ArthourNychta/mock-permission-detector.git/issues"
+    "url": "https://github.com/Periksa-Solusi-Indonesia/Capacitor-Mock-Location-Detector/issues"
   },
   "keywords": [
     "capacitor",
@@ -28,9 +26,8 @@
     "native"
   ],
   "scripts": {
-    "verify": "npm run verify:ios && npm run verify:android && npm run verify:web",
-    "verify:ios": "cd ios && pod install && xcodebuild -workspace Plugin.xcworkspace -scheme Plugin -destination generic/platform=iOS && cd ..",
-    "verify:android": "cd android && ./gradlew clean build test && cd ..",
+    "verify": "npm run verify:android && npm run verify:web",
+    "verify:android": "cd android && gradlew.bat clean build test && cd ..",
     "verify:web": "npm run build",
     "lint": "npm run eslint && npm run prettier -- --check && npm run swiftlint -- lint",
     "fmt": "npm run eslint -- --fix && npm run prettier -- --write && npm run swiftlint -- --fix --format",
@@ -68,9 +65,6 @@
     "extends": "@ionic/eslint-config/recommended"
   },
   "capacitor": {
-    "ios": {
-      "src": "ios"
-    },
     "android": {
       "src": "android"
     }
