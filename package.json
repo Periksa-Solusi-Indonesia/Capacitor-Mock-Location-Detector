@@ -1,6 +1,6 @@
 {
   "name": "@periksa/cap-mock-detector",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Detecting mock provider when fetching location (for Android).",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
