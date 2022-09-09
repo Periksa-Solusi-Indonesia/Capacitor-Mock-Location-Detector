@@ -14,7 +14,7 @@ npx cap sync
 
 <docgen-index>
 
-- [`detectMock()`](#detectmock)
+* [`detectMock()`](#detectmock)
 
 </docgen-index>
 
@@ -29,6 +29,6 @@ detectMock() => Promise<any>
 
 **Returns:** <code>Promise&lt;any&gt;</code>
 
----
+--------------------
 
 </docgen-api>

@@ -28,7 +28,6 @@ import com.google.android.gms.tasks.OnSuccessListener;
                 @Permission(
                         alias = "location",
                         strings = {
-                                Manifest.permission.ACCESS_BACKGROUND_LOCATION,
                                 Manifest.permission.ACCESS_COARSE_LOCATION,
                                 Manifest.permission.ACCESS_FINE_LOCATION
                         }
@@ -39,28 +38,21 @@ public class MockDetectorPlugin extends Plugin {
     private MockDetector implementation = new MockDetector();
 
     @PluginMethod
-    public void echo(PluginCall call) {
-        String value = call.getString("value");
-        JSObject ret = new JSObject();
-        ret.put("value", implementation.echo(value));
-        call.resolve(ret);
-    }
-
-    @PluginMethod
     public void detectMock(PluginCall call) {
-        Log.i("location", String.valueOf(getPermissionState("location")));
         if (getPermissionState("location") != PermissionState.GRANTED) {
             requestPermissionForAlias("location", call, "locPermissionCallback");
         } else {
             FusedLocationProviderClient fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this.getActivity().getApplicationContext());
-            if (ActivityCompat.checkSelfPermission(this.getActivity().getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this.getActivity().getApplicationContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            if (
+                    ActivityCompat.checkSelfPermission(this.getActivity().getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                            ActivityCompat.checkSelfPermission(this.getActivity().getApplicationContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED
+            ) {
                 return;
             }
             fusedLocationProviderClient.getLastLocation().addOnSuccessListener(this.getActivity(),
                     new OnSuccessListener<Location>() {
                         @Override
                         public void onSuccess(Location location) {
-                            Log.i("Location", String.valueOf(location));
                             JSObject data = new JSObject();
                             if (location == null) {
                                 data.put("value", null);
@@ -85,10 +77,6 @@ public class MockDetectorPlugin extends Plugin {
                         }
                     });
         }
-    }
-
-    private void getMock() {
-
     }
 
     @PermissionCallback
