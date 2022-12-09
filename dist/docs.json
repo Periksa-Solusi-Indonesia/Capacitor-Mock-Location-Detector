@@ -1,0 +1,25 @@
+{
+  "api": {
+    "name": "MockDetectorPlugin",
+    "slug": "mockdetectorplugin",
+    "docs": "",
+    "tags": [],
+    "methods": [
+      {
+        "name": "detectMock",
+        "signature": "() => Promise<any>",
+        "parameters": [],
+        "returns": "Promise<any>",
+        "tags": [],
+        "docs": "",
+        "complexTypes": [],
+        "slug": "detectmock"
+      }
+    ],
+    "properties": []
+  },
+  "interfaces": [],
+  "enums": [],
+  "typeAliases": [],
+  "pluginConfigs": []
+}
