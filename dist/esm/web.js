@@ -1,7 +1,11 @@
 import { WebPlugin } from '@capacitor/core';
 export class MockDetectorWeb extends WebPlugin {
     detectMock() {
-        throw false;
+        const data = {
+            value: false,
+            message: "web not implemented",
+        };
+        throw JSON.parse(JSON.stringify(data));
     }
 }
 //# sourceMappingURL=web.js.map

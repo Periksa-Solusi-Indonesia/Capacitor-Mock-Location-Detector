@@ -4,9 +4,10 @@ import type { MockDetectorPlugin } from './definitions';
 
 export class MockDetectorWeb extends WebPlugin implements MockDetectorPlugin {
   detectMock(): Promise<any> {
-    throw {
+    const data = {
       value: false,
       message: "web not implemented",
-    };
+    }
+    throw JSON.parse(JSON.stringify(data));
   }
 }

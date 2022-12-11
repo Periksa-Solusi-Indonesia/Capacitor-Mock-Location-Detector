@@ -10,7 +10,11 @@ const MockDetector = core.registerPlugin('MockDetector', {
 
 class MockDetectorWeb extends core.WebPlugin {
     detectMock() {
-        throw false;
+        const data = {
+            value: false,
+            message: "web not implemented",
+        };
+        throw JSON.parse(JSON.stringify(data));
     }
 }
 
