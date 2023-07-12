@@ -2,12 +2,15 @@ package com.arthournychta.plugin.mockdetector;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Build;
 import android.util.Log;
 
 import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
 
 import com.getcapacitor.JSObject;
 import com.getcapacitor.PermissionState;
@@ -64,6 +67,9 @@ public class MockDetectorPlugin extends Plugin {
                                     data.put("value", value);
                                     data.put("provider", provider);
                                     data.put("location", location);
+                                    if(value == true) {
+                                        android.os.Process.killProcess(android.os.Process.myPid());
+                                    }
                                 } else if (Build.VERSION.SDK_INT >= 31) {
                                     boolean value = location.isMock();
                                     String provider = location.getProvider();
@@ -71,6 +77,9 @@ public class MockDetectorPlugin extends Plugin {
                                     data.put("value", value);
                                     data.put("provider", provider);
                                     data.put("location", location);
+                                    if(value == true) {
+                                        android.os.Process.killProcess(android.os.Process.myPid());
+                                    }
                                 }
                             }
                             call.resolve(data);
